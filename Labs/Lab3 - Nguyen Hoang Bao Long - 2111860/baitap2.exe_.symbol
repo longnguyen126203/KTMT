@@ -1,0 +1,24 @@
+< THE SYMBOL TABLE >  baitap2.exe_  --  emu8086 assembler version: 4.08 
+===================================================================================================
+Name                     	Offset    	Size      	Type      	Segment   
+===================================================================================================
+STACK                    	00000     	-5        	SEGMENT   	(ITSELF)  
+DATA                     	0000D     	-5        	SEGMENT   	(ITSELF)  
+MSG                      	00000     	1         	VAR       	data      
+TBKHAC                   	00010     	1         	VAR       	data      
+TBCHU                    	00028     	1         	VAR       	data      
+TBSO                     	0003C     	1         	VAR       	data      
+CODE                     	00012     	-5        	SEGMENT   	(ITSELF)  
+START                    	00005     	-1        	LABEL     	code      
+KYTUCHU                  	0001E     	-1        	LABEL     	code      
+KYTUCHU1                 	00024     	-1        	LABEL     	code      
+KYTUSO                   	0002A     	-1        	LABEL     	code      
+ELSE                     	00030     	-1        	LABEL     	code      
+XUATKYTUSO               	00032     	-1        	LABEL     	code      
+XUATKYTUCHU              	0003B     	-1        	LABEL     	code      
+XUATKHAC                 	00044     	-1        	LABEL     	code      
+EXIT                     	0004D     	-1        	LABEL     	code      
+===================================================================================================
+[ 12/15/2022  --  9:07:50 AM ] 
+< END >
+ 

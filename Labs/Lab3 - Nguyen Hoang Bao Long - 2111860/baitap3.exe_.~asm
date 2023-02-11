@@ -1,0 +1,18 @@
+.model small
+.code
+mov al,'A'
+mov dl,al
+mov  ah,2
+
+loop:
+int 21h
+inc dl
+cmp dl,5Ah
+jng loop
+
+mov ah,4ch
+int 21h
+
+
+
+; [SOURCE]: C:\emu8086\MyBuild\Lab3 - Nguyen Hoang Bao Long - 2111860\baitap3.asm

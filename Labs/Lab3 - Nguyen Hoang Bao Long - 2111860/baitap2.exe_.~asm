@@ -1,0 +1,75 @@
+.model small
+.stack 200
+.data
+msg db "Nhap mot ky tu:$"
+TBKhac db 13,10, "Ky tunhap khac chu/so$"
+TBChu DB 13,10, "Ky tu nhap la chu$"
+TBSo DB 13,10, "Ky tu nhap la so$"
+
+.code
+mov ax, @data
+mov ds, ax
+
+start:
+; hien thi dong nhac
+lea dx, msg
+mov ah, 9
+int 21h
+
+mov ah, 1
+int 21h
+
+cmp al, 39h
+JBE KYTUSO
+
+cmp al, 5Ah
+jbe KYTUCHU
+
+cmp al, 7Ah
+jbe KYTUCHU1
+
+jmp ELSE
+
+KYTUCHU:
+cmp al, 41h
+jae XUATKYTUCHU
+jmp XUATKHAC
+
+KYTUCHU1:
+cmp al, 61h
+jae XUATKYTUCHU
+jmp XUATKHAC
+
+KYTUSO:
+cmp al, 30h
+jae XUATKYTUSO
+jmp XUATKHAC
+
+ELSE:
+jmp XUATKHAC
+
+XUATKYTUSO:
+lea dx, TBSo
+mov ah, 9
+int 21h
+jmp Exit
+
+XUATKYTUCHU:
+lea dx, TBChu
+mov ah, 9
+int 21h
+jmp Exit
+
+XUATKHAC:
+lea dx, TBKhac
+mov ah, 9
+int 21h
+jmp Exit
+
+Exit:
+mov ah, 4ch
+int 21h
+
+
+
+; [SOURCE]: C:\emu8086\MyBuild\Lab3 - Nguyen Hoang Bao Long - 2111860\baitap2.asm

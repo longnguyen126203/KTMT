@@ -1,0 +1,125 @@
+EMU8086 GENERATED LISTING. MACHINE CODE <- SOURCE.
+ 
+baitap1.exe_ -- emu8086 assembler version: 4.08  
+ 
+[ 12/15/2022  --  8:50:19 AM ] 
+ 
+===================================================================================================
+[LINE]     LOC: MACHINE CODE                          SOURCE
+===================================================================================================
+ 
+[   1]        :                                       .model small
+[   2]        :                                       .stack 200
+[   3]        :                                       .data
+[   4]    00D0: 4E 68 61 70 20 6D 6F 74 20 6B 79 20   msg db "Nhap mot ky tu:$"
+                74 75 3A 24                         
+[   5]    00E0: 0D 0A 43 68 61 6F 20 62 75 6F 69 20   msg1 db 13, 10, "Chao buoi sang$"
+                73 61 6E 67 24                      
+[   6]    00F1: 0D 0A 43 68 61 6F 20 62 75 6F 69 20   msg2 db 13, 10, "Chao buoi chieu$"
+                63 68 69 65 75 24                   
+[   7]    0103: 0D 0A 43 68 61 6F 20 62 75 6F 69 20   msg3 db 13, 10, "Chao buoi toi$"
+                74 6F 69 24                         
+[   8]        :                                       .code
+[   9]    0120: B8 0D 00                              mov ax, @data
+[  10]    0123: 8E D8                                 mov ds, ax
+[  11]        :                                       
+[  12]    0125:                                       start:
+[  13]        :                                       ;Hien thi dong nhac nhap
+[  14]    0125: BA 00 00                              lea dx, msg
+[  15]    0128: B4 09                                 mov ah, 9
+[  16]    012A: CD 21                                 int 21h
+[  17]        :                                       
+[  18]        :                                       ;Nhap mot ky tu
+[  19]    012C: B4 01                                 mov ah, 1
+[  20]    012E: CD 21                                 int 21h
+[  21]        :                                       
+[  22]    0130: 3C 53                                 cmp al, 53h
+[  23]    0132: 74 1B                                 JE CHAOBUOISANG
+[  24]        :                                       
+[  25]    0134: 3C 73                                 cmp al, 73h
+[  26]    0136: 74 17                                 JE CHAOBUOISANG
+[  27]        :                                       
+[  28]    0138: 3C 43                                 cmp al, 43h
+[  29]    013A: 74 1C                                 JE CHAOBUOICHIEU
+[  30]        :                                       
+[  31]    013C: 3C 63                                 cmp al, 63h
+[  32]    013E: 74 18                                 JE CHAOBUOICHIEU
+[  33]        :                                       
+[  34]    0140: 3C 54                                 cmp al, 54h
+[  35]    0142: 74 1D                                 je CHAOBUOITOI
+[  36]        :                                       
+[  37]    0144: 3C 74                                 cmp al, 74h
+[  38]    0146: 74 19                                 je CHAOBUOITOI
+[  39]        :                                       
+[  40]        :                                       ;quay lai 1 (vi nhap khong dung)
+[  41]    0148: B8 03 00                              mov ax, 3
+[  42]    014B: CD 10                                 int 10h
+[  43]    014D: EB D6                                 jmp start
+[  44]        :                                       
+[  45]    014F:                                       CHAOBUOISANG:
+[  46]    014F: BA 10 00                              lea dx, msg1
+[  47]    0152: B4 09                                 mov ah, 9
+[  48]    0154: CD 21                                 int 21h
+[  49]    0156: EB 12                                 jmp Exit
+[  50]        :                                       
+[  51]    0158:                                       CHAOBUOICHIEU:
+[  52]    0158: BA 21 00                              lea dx, msg2
+[  53]    015B: B4 09                                 mov ah, 9
+[  54]    015D: CD 21                                 int 21h
+[  55]    015F: EB 09                                 jmp Exit
+[  56]        :                                       
+[  57]    0161:                                       CHAOBUOITOI:
+[  58]    0161: BA 33 00                              lea dx, msg3
+[  59]    0164: B4 09                                 mov ah, 9
+[  60]    0166: CD 21                                 int 21h
+[  61]    0168: EB 00                                 jmp Exit
+[  62]        :                                       
+[  63]    016A:                                       Exit:
+[  64]    016A: B4 4C                                 mov ah, 4ch
+[  65]    016C: CD 21                                 int 21h
+[  66]        :                                       
+ 
+===================================================================================================
+ 
+EXE HEADER - bytes from 0000 to 01FF inclusive.
+
+0000: 4D      -   exe signature (M)
+0001: 5A      -   exe signature (Z)
+0002: 6E      -   bytes on last page (l.byte)
+0003: 01      -   bytes on last page (h.byte)
+0004: 02      -   512 byte pages in file (l.byte)
+0005: 00      -   512 byte pages in file (h.byte)
+0006: 01      -   relocations (l.byte)
+0007: 00      -   relocations (h.byte)
+0008: 20      -   paragraphs in header (l.byte)
+0009: 00      -   paragraphs in header (h.byte)
+000A: 00      -   minimum memory (l.byte)
+000B: 00      -   minimum memory (h.byte)
+000C: FF      -   maximum memory (l.byte)
+000D: FF      -   maximum memory (h.byte)
+000E: 00      -   SS - stack segment (l.byte)
+000F: 00      -   SS - stack segment (h.byte)
+0010: C8      -   SP - stack pointer (l.byte)
+0011: 00      -   SP - stack pointer (h.byte)
+0012: 0C      -   check sum (l.byte)
+0013: A3      -   check sum (h.byte)
+0014: 00      -   IP - instruction pointer (l.byte)
+0015: 00      -   IP - instruction pointer (h.byte)
+0016: 12      -   CS - code segment (l.byte)
+0017: 00      -   CS - code segment (h.byte)
+0018: 1E      -   relocation table adress (l.byte)
+0019: 00      -   relocation table adress (h.byte)
+001A: 00      -   overlay number (l.byte)
+001B: 00      -   overlay number (h.byte)
+001C: 01      -   signature (l.byte)
+001D: 00      -   signature (h.byte)
+001E: 01      -   relocation table - offset inside segment (l.byte)
+001F: 00      -   relocation table - offset inside segment (h.byte)
+0020: 12      -   relocation table - segment anchor (l.byte)
+0021: 00      -   relocation table - segment anchor (h.byte)
+0022 to 01FF  -   reserved relocation area  (00) 
+
+
+
+
+===================================================================================================
